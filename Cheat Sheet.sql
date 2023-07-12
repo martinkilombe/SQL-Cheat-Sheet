@@ -66,4 +66,19 @@ SELECT "Make","Model_Year","Electric_Range",
 FROM electric;
 
 
+SELECT "Make", "Electric_Vehicle_Type","Model_Year",AVG("Electric_Range") 
+OVER (PARTITION BY "Electric_Vehicle_Type" 
+	  ORDER BY "Model_Year")
+FROM electric;
+
+
+--Ranking Functions--
+--row_number() − unique number for each row within partition, with different numbers for tied values.
+--rank() − ranking within partition, with gaps and same ranking for tied values.
+--dense_rank() − ranking within partition, with no gaps and same ranking for tied values.
+
+
+--Row number
+ROW_NUMBER() OVER (PARTITION BY column1, column2, ... ORDER BY column3 [ASC|DESC])
+
 
