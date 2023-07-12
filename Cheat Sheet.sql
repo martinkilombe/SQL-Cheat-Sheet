@@ -94,4 +94,8 @@ RANK()OVER (PARTITION BY column1, column2,... ORDER BY column3 [ASC|DESC])
 SELECT "Make", "Electric_Vehicle_Type","Model_Year",
 RANK() OVER (PARTITION BY "Electric_Vehicle_Type" ORDER BY "Model_Year" ) FROM electric;
 
-
+--DENSE_RANK
+DENSE_RANK() OVER (PARTITION BY column1, column2, ... ORDER BY column3 [ASC|DESC])
+--Example
+SELECT "Make", "Electric_Vehicle_Type","Model_Year",
+DENSE_RANK() OVER (PARTITION BY "Electric_Vehicle_Type" ORDER BY "Model_Year" ) FROM electric;
