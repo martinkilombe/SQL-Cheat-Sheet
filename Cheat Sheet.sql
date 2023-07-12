@@ -78,7 +78,20 @@ FROM electric;
 --dense_rank() − ranking within partition, with no gaps and same ranking for tied values.
 
 
---Row number
+
+--row_number()
 ROW_NUMBER() OVER (PARTITION BY column1, column2, ... ORDER BY column3 [ASC|DESC])
+--Example
+SELECT "Make", "Electric_Vehicle_Type","Model_Year",
+ROW_NUMBER () OVER (PARTITION BY "Electric_Vehicle_Type" 
+					ORDER BY "Model_Year")
+FROM electric;
+
+
+--RANK()
+RANK()OVER (PARTITION BY column1, column2,... ORDER BY column3 [ASC|DESC])
+--Example
+SELECT "Make", "Electric_Vehicle_Type","Model_Year",
+RANK() OVER (PARTITION BY "Electric_Vehicle_Type" ORDER BY "Model_Year" ) FROM electric;
 
 
