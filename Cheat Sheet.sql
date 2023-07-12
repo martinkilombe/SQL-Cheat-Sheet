@@ -1,3 +1,18 @@
+
+---LOGICAL ORDER OF OPERATIONS IN SQL----
+1. FROM, JOIN
+2. WHERE
+3. GROUP BY
+4. aggregate functions
+5. HAVING
+6. window functions
+7. SELECT
+8. DISTINCT
+9. UNION/INTERSECT/EXCEPT
+10. ORDER BY
+11. OFFSET
+12. LIMIT/FETCH/TOP
+
 SELECT * FROM electric;
 
 --Filtering Output -
@@ -29,10 +44,26 @@ HAVING AVG("Electric_Range")>50;
 
 
 --SUBQUERIES
---Tesla vehicle millage >50 miles
+--Tesla vehicle millage >50 miles'
 SELECT "Electric_Range","Make" FROM electric
 WHERE "Electric_Range" IN (
 	SELECT "Electric_Range" 
 	FROM electric
 	WHERE "Electric_Range" > 50
 );
+--Vehicles made > 2020 and have a milleage > 100
+SELECT "Vehicle_ID","Model", "Make","Electric_Range" FROM electric
+WHERE "Model_Year" > 2020 AND "Electric_Range" > 50
+
+--Window Functions
+SELECT column1 , column2,....,
+	Window_function() OVER (pARTITION BY column1, column2,...)
+FROM Table;
+
+--Example
+SELECT "Make","Model_Year","Electric_Range",
+	AVG("Electric_Range") OVER (PARTITION BY "Make","Model_Year") AS Average_Mileage
+FROM electric;
+
+
+
