@@ -29,4 +29,10 @@ HAVING AVG("Electric_Range")>50;
 
 
 --SUBQUERIES
-SELECT ss
+--Tesla vehicle millage >50 miles
+SELECT "Electric_Range","Make" FROM electric
+WHERE "Electric_Range" IN (
+	SELECT "Electric_Range" 
+	FROM electric
+	WHERE "Electric_Range" > 50
+);
