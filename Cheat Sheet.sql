@@ -102,7 +102,45 @@ RANK() OVER (PARTITION BY "Electric_Vehicle_Type" ORDER BY "Model_Year" ) FROM e
 
 
 
+--JOINS(Code ONLY)
+SELECT col1.table1 , col1.table2
+FROM table1
+JOIN/LEFT/RIGHT/FULL/CROSS table2
+ON table1.id = table2.id
 
+--Examples
+--1) INNER JOIN:The INNER JOIN returns only the matching rows between the tables being joined, based on the specified join condition. 
+--It filters out any non-matching rows.
+SELECT columns
+FROM table1
+INNER JOIN table2 ON table1.column = table2.column;
+ 
+--2) LEFT JOIN (or LEFT OUTER JOIN):The LEFT JOIN returns all rows from the left (or first) table and the matching rows from the right (or second) table. 
+--If there are no matching rows in the right table, NULL values are returned for the right table's columns.
+SELECT columns
+FROM table1
+LEFT JOIN table2 ON table1.column = table2.column;
+
+
+--3) RIGHT JOIN (or RIGHT OUTER JOIN):
+--The RIGHT JOIN returns all rows from the right (or second) table and the matching rows from the left (or first) table. 
+--If there are no matching rows in the left table, NULL values are returned for the left table's columns.
+SELECT columns
+FROM table1
+RIGHT JOIN table2 ON table1.column = table2.column;
+
+--4) FULL JOIN (or FULL OUTER JOIN):
+--The FULL JOIN returns all rows from both tables, regardless of whether they have matching rows or not. 
+--If there is no match, NULL values are returned for the columns of the non-matching table.
+SELECT columns
+FROM table1
+FULL JOIN table2 ON table1.column = table2.column;
+
+
+
+--TEXT FUNCTIONS
+--CONCATENATION
+SELECT 'Hi ' || 'there!';
 
 
 
