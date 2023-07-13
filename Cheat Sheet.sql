@@ -142,6 +142,83 @@ FULL JOIN table2 ON table1.column = table2.column;
 --CONCATENATION
 SELECT 'Hi ' || 'there!';
 
+--USEFUL FUNCTIONS
+--Get the count of characters in a string:
+SELECT LENGTH('LearnSQL.com');
+-- result: 12
+
+
+--Convert all letters to lowercase:
+SELECT LOWER('LEARNSQL.COM');
+-- result: learnsql.com
+
+--Convert all letters to uppercase:
+SELECT UPPER('LearnSQL.com');
+-- result: LEARNSQL.COM
+
+
+--Convert all letters to lowercase and all first letters to uppercase(not implemented in MySQL and SQL Server):
+SELECT INITCAP('edgar frank ted cODD');
+-- result: Edgar Frank Ted Codd
+
+--Get just a part of a string:
+SELECT SUBSTRING('LearnSQL.com', 9);
+-- result: .com
+
+SELECT SUBSTRING('LearnSQL.com', 0, 6);
+-- result: Learn
+
+--Replace part of a string:
+SELECT REPLACE('LearnSQL.com', 'SQL', 
+'Python');
+-- result: LearnPython.com
+
+--CASTING -From time to time, you need to change the type of a number. TheCAST() function is there to help you out. 
+--It lets you change thetype of value to almost anything (integer, numeric, doubleprecision, varchar, and many more).
+SELECT CAST (1234.567 AS integer)
+
+SELECT CAST (COLUMN1 AS double precision)
+
+--Rounding off -ROUND(number, decimal point)
+SELECT ROUND(1234.56789)
+SELECT ROUND(1234.56789, 2)
+
+--Round upper - SELECT CEIL()
+SELECT CEIL(13.1)
+SELECT CEIL(13.5)
+
+--Round down - SELECT FLOOR()
+SELECT FLOOR(13.1)
+SELECT FLOOR(13.5)
+
+--To get the absolute value of a number:
+SELECT ABS(-12); -- result: 12
+
+--To get the square root of a number:
+SELECT SQRT(9); -- result: 3
+
+
+--CASE WHEN --The basic version of CASE WHEN checks if the values are equal.
+--EXAMPLE 1
+SELECT "Make","Model", "Model_Year",
+	CASE
+	WHEN "Electric_Range" <50 THEN 'Low Milleage'
+	WHEN "Electric_Range" >100 THEN 'High Milleage'
+	WHEN "Electric_Range" >=50 AND "Electric_Range" <=100 THEN 'Medium Milleage'
+	ELSE 'NO Milleage'
+	END AS vehicle_Milleage
+FROM electric;
+
+--EXAMPLE 2
+SELECT "Make", "Model", "Model_Year",
+    CASE
+        WHEN AVG("Electric_Range") < 50 THEN 'Low Average Mileage'
+        WHEN AVG("Electric_Range") > 100 THEN 'High Average Mileage'
+        WHEN AVG("Electric_Range") >= 50 AND AVG("Electric_Range") <= 100 THEN 'Medium Average Mileage'
+        ELSE 'No Mileage'
+    END AS Vehicle_Average_Mileage
+FROM electric
+GROUP BY "Make", "Model", "Model_Year";
 
 
 
@@ -154,10 +231,9 @@ SELECT 'Hi ' || 'there!';
 
 
 
---DENSE_RANK
-DENSE_RANK() OVER (PARTITION BY column1, column2, ... ORDER BY column3 [ASC|DESC])
---Example
-SELECT "Make", "Electric_Vehicle_Type","Model_Year",
-DENSE_RANK() OVER (PARTITION BY "Electric_Vehicle_Type" ORDER BY "Model_Year" ) FROM electric;
+
+
+
+
 
 
