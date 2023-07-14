@@ -221,6 +221,9 @@ FROM electric
 GROUP BY "Make", "Model", "Model_Year";
 
 
+--MANAGING TABLES --
+
+
 
 
 
