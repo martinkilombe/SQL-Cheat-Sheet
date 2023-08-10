@@ -73,8 +73,8 @@ FROM electric;
 
 
 --Ranking Functions--
---row_number() − unique number for each row within partition, with different numbers for tied values.
---rank() − ranking within partition, with gaps and same ranking for tied values.
+--row_number() − unique number for each row within partition, with different numbers for tied values.--
+--rank() − ranking within partition, with gaps and same ranking for tied values--
 --dense_rank() − ranking within partition, with no gaps and same ranking for tied values.
 
 
